@@ -1,7 +1,7 @@
 Package.describe({
   name: 'sunstory:meteor-template-helpers',
   summary: 'Useful template helpers.',
-  version: '1.0.1',
+  version: '1.0.2',
   git: 'https://github.com/sunstorymvp/meteor-template-helpers.git'
 });
 

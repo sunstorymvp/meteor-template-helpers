@@ -29,7 +29,7 @@ Meteor.startup ->
     else if _.isFunction prop then prop()
     else prop
 
-  Template.registerHelper 'session', ->
+  Template.registerHelper 'session', (property) ->
     check property, String
 
     Session.get property
