@@ -6,6 +6,8 @@ Included helpers:
 * `Template` - access to current `Template.instance()`
 * `settings` - access to `Meteor.settings.public`
 * `session` - access to `Session`
+* `imageLoaded` - check whether the image is loaded.
+* `imageLoading` - check whether the image is in the process of loading.
 
 ### Install
 
@@ -94,3 +96,21 @@ Included helpers:
     <p>second is {{second}}</p>
   {{/with}}
 ```
+
+`imageLoaded`, `imageLoading`:
+
+```handlebars
+  {{#if imageLoading imageUrl}}
+    ... spinner ...
+  {{else}}
+    <img src="{{imageUrl}}">
+  {{/if}}
+
+  {{#if imageLoaded imageUrl}}
+    <img src="{{imageUrl}}">
+  {{/if}}
+```
+
+### Changelog
+
+* **19 Oct 2015**: added `imageLoaded` and `imageLoading` helpers.

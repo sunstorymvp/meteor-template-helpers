@@ -33,3 +33,43 @@ Meteor.startup ->
     check property, String
 
     Session.get property
+
+  Template.registerHelper 'imageLoaded', (imageUrl) ->
+    check imageUrl, String
+
+    template = Template.instance()
+
+    if template._imageLoaded
+      template._imageLoaded.get()
+    else
+      template._imageLoaded = new Blaze.ReactiveVar false
+
+      image = $('<img/>')
+
+      image.on 'load', ->
+        image.remove()
+        template._imageLoaded.set true
+
+      image.attr 'src', imageUrl
+
+      template._imageLoaded.get()
+
+  Template.registerHelper 'imageLoading', (imageUrl) ->
+    check imageUrl, String
+
+    template = Template.instance()
+
+    if template._imageLoading
+      template._imageLoading.get()
+    else
+      template._imageLoading = new Blaze.ReactiveVar true
+
+      image = $('<img/>')
+
+      image.on 'load', ->
+        image.remove()
+        template._imageLoading.set false
+
+      image.attr 'src', imageUrl
+
+      template._imageLoading.get()
