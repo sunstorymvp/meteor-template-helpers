@@ -28,6 +28,8 @@ Meteor.startup ->
     Session.get property
 
   Template.registerHelper 'imageLoaded', (imageUrl) ->
+    unless imageUrl then return
+
     template = Template.instance()
 
     if template._imageLoaded
@@ -46,6 +48,8 @@ Meteor.startup ->
       template._imageLoaded.get()
 
   Template.registerHelper 'imageLoading', (imageUrl) ->
+    unless imageUrl then return
+
     template = Template.instance()
 
     if template._imageLoading
