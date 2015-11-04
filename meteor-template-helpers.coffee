@@ -1,7 +1,5 @@
 Meteor.startup ->
   Template.registerHelper 'settings', (property) ->
-    check property, Match.Optional String
-
     if property
       Meteor.settings.public[property]
     else
@@ -16,9 +14,6 @@ Meteor.startup ->
     property = args[0]
     key = args[1]
 
-    check property, String
-    check key, Match.Optional String
-
     prop = Template.instance()[property]
 
     unless prop then return
@@ -30,13 +25,9 @@ Meteor.startup ->
     else prop
 
   Template.registerHelper 'session', (property) ->
-    check property, String
-
     Session.get property
 
   Template.registerHelper 'imageLoaded', (imageUrl) ->
-    check imageUrl, String
-
     template = Template.instance()
 
     if template._imageLoaded
@@ -55,8 +46,6 @@ Meteor.startup ->
       template._imageLoaded.get()
 
   Template.registerHelper 'imageLoading', (imageUrl) ->
-    check imageUrl, String
-
     template = Template.instance()
 
     if template._imageLoading
